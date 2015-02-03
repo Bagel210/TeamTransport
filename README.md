@@ -5,6 +5,10 @@ See Edinburgh In a Day
 
 A web application using the Transport For Edinburgh API to help users plan their day vistiting attractions in Edinburgh effectively.
 
+=== Running application === -
+$ cd /TeamTransport/SeeEdin
+$ python manage.py runserver
+$ open http://127.0.0.1:8000/
 
 === Useful Links ===
 
