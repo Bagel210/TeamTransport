@@ -7,7 +7,9 @@ A web application using the Transport For Edinburgh API to help users plan their
 
 === Running application === -
 $ cd /TeamTransport/SeeEdin
+
 $ python manage.py runserver
+
 $ open http://127.0.0.1:8000/
 
 === Useful Links ===
