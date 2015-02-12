@@ -1,5 +1,6 @@
 # Using Python-Request to poll API
 import requests
+import json
 import pprint as pp
 
 api_code = '0c627af5849e23b0b030bc7352550884'
@@ -14,9 +15,21 @@ r = requests.get('https://tfe-opendata.com/api/v1/'+key+'/'+stop_number, headers
 # r = requests.get('https://tfe-opendata.com/api/v1/timetables/36235979', headers=headers)
 
 if r.status_code == 200:
-	pp.pprint(r.json())
+	# pp.pprint(r.json())
+	stuff = r.json()
+	# print stuff['departures'][0]
+	pass
 else:
 	print r.status_code
+
+
+#Structure of JSON
+stuff = {
+	'stop_id' : 0, # This should be the primary key
+	'stop_name' : 'example',
+	'departures' : ['list_of_all_departments'] # I don't think we should store this.
+}
+
 
 # {u'departures': [{u'day': 0,
 #                   u'destination': u'Ocean Terminal',
