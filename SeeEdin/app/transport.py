@@ -5,30 +5,30 @@ import pprint as pp
 
 api_code = '0c627af5849e23b0b030bc7352550884'
 
-headers = {"Authorization" : "Token "+ api_code}
+headers = {"Authorization": "Token " + api_code}
 
-key ="timetables"
+key = "timetables"
 stop_number = "36235979"
 
 
 r = requests.get('https://tfe-opendata.com/api/v1/'+key+'/'+stop_number, headers=headers)
 # r = requests.get('https://tfe-opendata.com/api/v1/timetables/36235979', headers=headers)
+def call_api():
+    if r.status_code == 200:
+        # pp.pprint(r.json())
+        stuff = r.json()
+        # print stuff['departures'][0]
+        pass
 
-if r.status_code == 200:
-	# pp.pprint(r.json())
-	stuff = r.json()
-	# print stuff['departures'][0]
-	pass
-else:
-	print r.status_code
+    return stuff
 
 
-#Structure of JSON
-stuff = {
-	'stop_id' : 0, # This should be the primary key
-	'stop_name' : 'example',
-	'departures' : ['list_of_all_departments'] # I don't think we should store this.
-}
+# Structure of JSON
+#stuff = {
+#    'stop_id': 0, # This should be the primary key
+#    'stop_name': 'example',
+#    'departures': ['list_of_all_departments'] # I don't think we should store this.
+#}
 
 
 # {u'departures': [{u'day': 0,

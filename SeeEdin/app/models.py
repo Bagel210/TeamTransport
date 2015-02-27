@@ -1,6 +1,27 @@
 from django.db import models
+import json
+
 
 # Create your models here.
+class Departures(models.Model):
+    valid_from = models.IntegerField()
+    day = models.IntegerField(max_length=1)
+    #time = models.TimeField()
+    service_name = models.CharField(max_length=100)
+    destination = models.CharField(max_length=200)
+
+class BusStop(models.Model):
+    id = models.IntegerField(primary_key=True)
+    stop_name = models.CharField(max_length=200)
+    departures = models.CharField(max_length=200)
+
+    def setdepartures(self, x):
+        self.departures = json.dumps(x)
+
+    def getdepartures(self, x):
+        return json.loads(self.departures)
+
 
 class Attraction(models.Model):
-	name = models.CharField(max_length=100)
+    bus_stop = models.ForeignKey(BusStop, related_name='closest_stop')
+    attraction_name = models.CharField(max_length=100)

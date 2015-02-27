@@ -72,6 +72,9 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
+#Need to use this for default time to appear as X:YY without seconds
+TIME_INPUT_FORMATS = ('%I:%M',)
+
 USE_I18N = True
 
 USE_L10N = True
