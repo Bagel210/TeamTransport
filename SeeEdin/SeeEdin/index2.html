@@ -1,0 +1,136 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="viewport" content="width=device-width">
+   
+	<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		
+
+		 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		  <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+		  <script>
+  $(function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+ 
+    $( "#tags" )
+      // don't navigate away from the field on tab when selecting an item
+      .bind( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        minLength: 0,
+        source: function( request, response ) {
+          // delegate back to autocomplete, but extract the last term
+          response( $.ui.autocomplete.filter(
+            availableTags, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  });
+  </script>
+	
+		<style type="text/css">
+			.form-group.multi-field {
+				display: block;
+				clear: both;
+				margin: 15px;
+				}
+			input[type="text"] {
+				width: 94% !important;
+			}	
+			button.add-field.btn.btn-info {
+				margin: 15px 0 0 0;
+				float: left;
+			}
+		</style>
+</head>
+<body>
+
+ 
+</div>
+     
+	<div class="container">
+		<form class="form-inline" autocomplete="on">
+			<div class="multi-field-wrapper row">
+				
+				<div class="multi-fields ">
+					
+				  <div class="form-group multi-field">
+					<label for="exampleInputEmail1">Item: </label>
+					<input type="text" class="form-control" name="item" id="tags"  placeholder="Enter items">
+					
+				  </div>
+				  
+				</div>
+			
+			</div>	
+			<div class="text-center">
+			  <button type="submit" class="btn btn-success">Submit item list to engine</button>
+			</div>  
+		</form>
+	</div>
+   
+
+
+
+   
+    
+</body>
+</html>
