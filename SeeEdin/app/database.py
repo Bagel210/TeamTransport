@@ -17,8 +17,13 @@ def add_data():
         )
         list_of_departures.append(departure)
 
-    bus_stop = BusStop.objects.create(
+    busStop = BusStop.objects.create(
         id=data['stop_id'],
         stop_name=data['stop_name'],
         departures=list_of_departures
+    )
+
+    attractionOne = Attraction.objects.create(
+        bus_stop=busStop,
+        attraction_name='An Attraction at Elm Row'
     )

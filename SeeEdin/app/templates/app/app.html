@@ -1,28 +1,21 @@
 {% extends "app/base.html" %}
 {% block main%}
 <div class="row">
-    <div class="box">
-<!--         <div class="col-lg-12">
-            <hr>
-            <h2 class="intro-text text-center">About
-                <strong>David Kent Group</strong>
-            </h2>
-            <hr>
-        </div>
-        <div class="col-md-6">
-            <img class="img-responsive img-border-left" src="{{STATIC_URL}}img/slide-2.jpg" alt="">
-        </div>
-        <div class="col-md-6">
-            <p>The David Kent Group have been established since 1997. Based in Edinburgh, we are a family run business who strongly believe in working together with our clients to give maximum satisfaction on any projects we undertake.</p>
+    <div class="attractionList">
 
-            <p><strong>Testimonials</strong></p>
-            <p>We have an extensive list of testomnials ranging from private homeowners to large housing associations and property management companies. Tesimonials are available via <strong>email request</strong> only </p>
+        <p>List of Attractions: </p>
 
-            <p><strong>What We Offer</strong></p>
-            <p>Free No Obligation Estimates. Superb Quality Workmanship Carried Out By Highly Skilled Tradesman. All Jobs Fully Guaranteed</p>
-        </div> -->
-        <div class="clearfix"></div>
+        {% for attraction in attractions_list %}
+            {{ attraction.attraction_name }}
+        {% endfor %}
+
+        <p>List of Bus Stops: </p>
+
+        {% for busStop in busStop_list %}
+            {{ busStop.stop_name }}
+        {% endfor %}
+
     </div>
 </div>
 
-{% endblock%}
+{% endblock %}
