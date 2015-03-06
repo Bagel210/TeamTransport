@@ -23,6 +23,6 @@ $ open http://127.0.0.1:8000/
 
 [Django](https://www.djangoproject.com)
 
-[Edinburgh Transport API](http://www.mybustracker.co.uk/docs/edinburgh/10124-MAN-11251-C%20MyBustracker%20Web%20Services%20-%20Third-party%20developer's%20guide.pdf)
+[Edinburgh Transport API](http://tfe-opendata.readme.io/v1.0/docs/)
 
 [Trip Advisor API](https://developer-tripadvisor.com/content-api/description/)
