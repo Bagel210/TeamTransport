@@ -18,7 +18,7 @@ def get_list_of_stops():
 	http://tfe-opendata.readme.io/v1.0/docs/stops
 	"""
 	r = requests.get(BASE+'stops')
-	
+
 	if r.status_code == 200:
 		return r.json()['stops']
 
@@ -28,7 +28,7 @@ def get_list_of_services():
 	http://tfe-opendata.readme.io/v1.0/docs/services
 	"""
 	r = requests.get(BASE+'services')
-	
+
 	if r.status_code == 200:
 		return r.json()
 
@@ -49,9 +49,9 @@ def time_table_between_stops(first_stop, last_stop, date, duration='120'):
 	first_stop and last_stop must be on same journey to use this method
 	"""
 
-	r = requests.get(BASE+'stoptostop-timetable/?start_stop_id=' + first_stop 
-							+ '&finish_stop_id=' + last_stop 
-							+ '&date=' + date 
+	r = requests.get(BASE+'stoptostop-timetable/?start_stop_id=' + first_stop
+							+ '&finish_stop_id=' + last_stop
+							+ '&date=' + date
 							+ '&duration=' + duration)
 
 	if r.status_code == 200:
@@ -61,19 +61,14 @@ def time_table_between_stops(first_stop, last_stop, date, duration='120'):
 def journey_plan(begin_position, end_position, date, time_mode='LeaveAfter'):
 	"""
 	http://tfe-opendata.readme.io/v1.0/docs/journey-planner
-	
+
 	# Positions are tuples of float ->  (e.g. 55.31112,-3.12797)
 	# time mode can be either LeaveAfter or ArriveBy
 	"""
-
-	r = requests.get(BASE + '/directions/?start=' + begin_position 
-							+ '+&finish=' + end_position 
-							+ '&date=' + date 
-							+ '&time_mode=' + time_mode)
+	payload = {'start': begin_position, 'finish': end_position, 'date': date, 'time_mode': time_mode}
+	r = requests.get(BASE + '/directions/', params=payload, headers=headers)
 
 	if r.status_code == 200:
 		return r.json()
-
-
-
-
+	else:
+		raise RuntimeError('Request returned status ' + str(r.status_code))
