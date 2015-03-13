@@ -15,6 +15,7 @@ class BusStop(models.Model):
     stop_name = models.CharField(max_length=200)
     departures = models.CharField(max_length=200)
 
+
     def setdepartures(self, x):
         self.departures = json.dumps(x)
 
@@ -25,3 +26,15 @@ class BusStop(models.Model):
 class Attraction(models.Model):
     bus_stop = models.ForeignKey(BusStop, related_name='closest_stop')
     attraction_name = models.CharField(max_length=100)
+
+class Stops(models.Model):
+    stop_id = models.CharField(max_length=20)
+    atco_code = models.CharField(max_length=25)
+    name = models.CharField(max_length=100)
+    #locality = models.CharField(max_length=100)
+    orientation = models.IntegerField()
+    direction = models.CharField(max_length=2)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    #destinations = models.CharField(max_length=200)
+    #services = models.CharField(max_length=200)

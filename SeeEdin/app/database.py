@@ -1,8 +1,35 @@
 from app import transport
-from app.models import Departures, BusStop, Attraction
+from app import api
+from app.models import Departures, BusStop, Attraction, Stops
 
-data = transport.call_api()
+#data = transport.call_api()
 
+list_of_stops = api.get_list_of_stops()
+list_of_services = api.get_list_of_services()
+#stop_timetable = api.get_timetable_for_stop()
+
+def data_from_api():
+
+    stop_values = list_of_stops['stops']
+    stop_object_list = []
+    for stop_value in stop_values:
+        stop = Stops.objects.create(
+            stop_id=stop_value['stop_id'],
+            atco_code=stop_value['atco_code'],
+            name=stop_value['name'],
+            #locality=stop_value['locality'],
+            orientation=stop_value['orientation'],
+            direction=stop_value['direction'],
+            latitude=stop_value['latitude'],
+            longitude=stop_value['longitude'],
+            #destinations=stop_value['destinations'],
+            #services=stop_value['services']
+        )
+        stop_object_list.append(stop)
+
+    #services_values = list_of_services['services']
+
+'''
 def add_data():
 
     departure_values = data['departures']
@@ -27,3 +54,4 @@ def add_data():
         bus_stop=busStop,
         attraction_name='An Attraction at Elm Row'
     )
+'''

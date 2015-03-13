@@ -18,19 +18,14 @@ def get_list_of_stops():
     r = requests.get(BASE+'stops')
 
     if r.status_code == 200:
-        return r.json()['stops']
+
+        return r.json()
 
 
 # @ http://tfe-opendata.readme.io/v1.0/docs/services
 def get_list_of_services():
 
     # GET /v1/services
-    r = requests.get(BASE+'services')
-
-    if r.status_code == 200:
-        return r.json()
-
-    GET /v1/services
     r = requests.get(BASE+'services')
 
     if r.status_code == 200:
@@ -68,7 +63,7 @@ def journey_plan(begin_position, end_position, date, time_mode='LeaveAfter'):
         return r.json()
 
     # Note: must be on same journey
-    r = requests.get(BASE+'stoptostop-timetable/?start_stop_id=' + first_stop + '&finish_stop_id=' + last_stop + '&date=' + date + '&duration=' + duration)
+    r = requests.get(BASE+'stoptostoppthon-timetable/?start_stop_id=' + first_stop + '&finish_stop_id=' + last_stop + '&date=' + date + '&duration=' + duration)
     if r.status_code == 200:
         return r.json()
 

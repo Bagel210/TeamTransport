@@ -11,6 +11,7 @@ from app import database
 #
 
 #database.add_data()
+#database.data_from_api()
 
 def journeyPlan(request):
     context = RequestContext(request)
