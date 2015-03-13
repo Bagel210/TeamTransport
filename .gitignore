@@ -5,6 +5,9 @@ __pycache__/
 # C extensions
 *.so
 
+DB
+SeeEdin/db.sqlite3
+
 # Distribution / packaging
 .Python
 venv/
