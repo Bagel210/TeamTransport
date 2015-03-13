@@ -62,6 +62,8 @@ def journey_plan(begin_position, end_position, date, time_mode='LeaveAfter'):
     if r.status_code == 200:
         return r.json()
 
+def stop_to_stop(first_stop, last_stop, date, duration):
+
     # Note: must be on same journey
     r = requests.get(BASE+'stoptostoppthon-timetable/?start_stop_id=' + first_stop + '&finish_stop_id=' + last_stop + '&date=' + date + '&duration=' + duration)
     if r.status_code == 200:
