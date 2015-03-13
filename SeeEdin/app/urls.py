@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 
-from app.views import journeyPlan
+from app.views import journeyPlan, route
 
 urlpatterns = patterns('',
     # Examples:
@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     #url(r'^app','app.views.app'),
 
     url(r'^app/$', journeyPlan, name="journey_planner"),
+    url(r'^app/route$', route, name="route"),
 
     # url(r'^/',include('app.urls')),
 )
