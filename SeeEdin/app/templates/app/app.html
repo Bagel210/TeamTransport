@@ -1,0 +1,22 @@
+{% extends "app/base.html" %}
+{% block main%}
+<div class="row">
+    <div class="attractionList">
+
+        <p>List of Attractions: </p>
+
+        {% for attraction in attractions_list %}
+            {{ attraction.attraction_name }}
+        {% endfor %}
+
+        <p>List of Bus Stops: </p>
+
+        {% for stop in stop_list %}
+            {{ stop.name }}
+        {% endfor %}
+
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="viewport" content="width=device-width">
+   
+	<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		
+
+		 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		  <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+		 <script type='text/javascript'>//<![CDATA[ 
+			$(function(){
+			$('.multi-field-wrapper').each(function() {
+				var $wrapper = $('.multi-fields', this);
+				$(".add-field", $(this)).click(function(e) {
+					$('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find('input').val('').focus();
+				});
+				$('.multi-field .remove-field', $wrapper).click(function() {
+					if ($('.multi-field', $wrapper).length > 1)
+						$(this).parent('.multi-field').remove();
+				});
+			});
+			});//]]>  
+
+		</script>
+	
+		<style type="text/css">
+			.form-group.multi-field {
+				display: block;
+				clear: both;
+				margin: 15px;
+				}
+			input[type="text"] {
+				width: 94% !important;
+			}	
+			button.add-field.btn.btn-info {
+				margin: 15px 0 0 0;
+				float: left;
+			}
+		</style>
+</head>
+<body>
+
+   
+     
+	<div class="container">
+		<form class="form-inline" autocomplete="on">
+			<div class="multi-field-wrapper row">
+				
+				<div class="multi-fields col-xs-12 col-sm-8">
+					
+				  <div class="form-group multi-field">
+					<label for="exampleInputEmail1">Item: </label>
+					<input type="text" class="form-control" name="item[]"  placeholder="Enter items">
+					
+				  </div>
+				  
+				</div>
+				<div class="col-xs-12 col-sm-4">
+					<button type="button" class="add-field btn btn-info">Add field</button>
+				</div>
+			</div>	
+			<div class="col-xs-12 col-sm-8 text-center">
+			  <button type="submit" class="btn btn-success">Submit item list to engine</button>
+			</div>  
+		</form>
+	</div>
+   
+
+
+
+   
+    
+</body>
+</html>
