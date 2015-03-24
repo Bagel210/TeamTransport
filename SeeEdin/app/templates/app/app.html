@@ -3,20 +3,39 @@
 <div class="row">
     <div class="attractionList">
 
-        <p>List of Attractions: </p>
+        <p>Journey Planner: </p>
 
         {% for attraction in attractions_list %}
             {{ attraction.attraction_name }}
         {% endfor %}
 
-        <p>List of Bus Stops: </p>
-
-        {% for stop in stop_list %}
-            {{ stop.name }}
-        {% endfor %}
-
-
     </div>
+
+    <table>
+        <tr><p>Select Bus Stop: </p>
+            <td>
+                <select name="dropdown">
+
+                    {% for stop in stop_list %}
+                        <option value ="{{ stop.name }}">{{ stop.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <table>
+        <tr><p>Select Destination: </p>
+            <td>
+                <select name="dropdown">
+
+                    {% for stop in stop_list %}
+                        <option value ="{{ stop.name }}">{{ stop.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        <td><input type="submit" value="Find A Journey" /></td></tr>
+    </table>
 </div>
 
 {% endblock %}
