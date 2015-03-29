@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% extends "app/base.html" %}
+{% block content %}
+
+    <html>
+<head>
+    <title>Login to SeeEdin</title>
+</head>
+
+<body>
+<h1>Login to AllExplore</h1>
+
+<form id="login_form" method="post" action="/login/">
+    {% csrf_token %}
+    Username: <input type="text" name="username" value="" size="50"/>
+    <br/>
+    Password: <input type="password" name="password" value="" size="50"/>
+    <br/>
+
+    <input type="submit" value="submit"/>
+</form>
+
+</body>
+</html>
+
+{% endblock %}

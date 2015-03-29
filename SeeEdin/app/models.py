@@ -1,8 +1,16 @@
 from django.db import models
 import json
+from django.contrib.auth.models import User
 
 
 # Create your models here.
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    # Could give user a record of past journeys..
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+
+
 class Departures(models.Model):
     valid_from = models.IntegerField()
     day = models.IntegerField(max_length=1)

@@ -50,9 +50,23 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li>
-                        <a href="app">App</a>
+                        <a href="/app">App</a>
                     </li>
+                    <li>
+                        <a href="/logout/">Logout</a>
+                    </li>
+
+                    {% else %}
+                    <li>
+                        <a href="/register/">Register Here</a>
+                    </li>
+                    <li>
+                        <a href="/login/">Login</a>
+                    </li>
+
+                    {% endif %}
 <!--                     <li>
                         <a href="">Projects</a>
                     </li>
@@ -85,6 +99,12 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+
+
+{% block content %}
+
+{% endblock %}
+
 
 </body>
 
