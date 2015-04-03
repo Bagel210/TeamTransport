@@ -50,15 +50,6 @@ def route(request):
 def home(request):
     return render(request,'app/about.html')
 
-def userList(request):
-    context = RequestContext(request)
-    user_list = UserProfile.objects.all()
-
-    return render_to_response(
-        'userlist.html',
-        {'user_list': user_list},
-        context)
-
 def register(request):
     # Like before, get the request's context.
     context = RequestContext(request)
