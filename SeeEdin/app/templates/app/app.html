@@ -36,7 +36,10 @@
                     {% endfor %}
                 </select>
             </td>
-        <td><input type="submit" value="Find A Journey" /></td></tr>
+        <td>
+            <form id="route_form" method="post" action="/app/route"
+              enctype="multipart/form-data">
+            <input type="submit" value="Find A Journey" /></form></td></tr>
     </table>
 </div>
 
