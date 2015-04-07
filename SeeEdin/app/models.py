@@ -30,10 +30,6 @@ class BusStop(models.Model):
         return json.loads(self.departures)
 
 
-class Attraction(models.Model):
-    bus_stop = models.ForeignKey(BusStop, related_name='closest_stop')
-    attraction_name = models.CharField(max_length=100)
-
 class Stops(models.Model):
     stop_id = models.CharField(max_length=20)
     atco_code = models.CharField(max_length=25)
@@ -46,3 +42,7 @@ class Stops(models.Model):
     #destinations = models.CharField(max_length=200)
     #services = models.CharField(max_length=200)
     #attraction foreign key?
+
+class Attraction(models.Model):
+    bus_stop = models.ForeignKey(Stops, related_name='closest_stop')
+    attraction_name = models.CharField(max_length=100)

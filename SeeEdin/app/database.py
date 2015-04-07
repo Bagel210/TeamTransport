@@ -51,3 +51,14 @@ def add_stops():
         stop_object_list.append(stop)
 
     #services_values = list_of_services['services']
+
+
+def add_attractions():
+
+    stops = Stops.objects.all()
+    for stop in stops:
+        if stop.stop_id == "36242342":
+            attraction1 = Attraction.objects.create(
+                bus_stop=stop,
+                attraction_name="Edinburgh Castle"
+            )
