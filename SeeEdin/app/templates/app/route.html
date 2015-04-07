@@ -30,11 +30,13 @@ var start = L.marker([{{ first.start.latitude}}, {{ first.start.longitude}}]).ad
 start.bindPopup("Start").openPopup();
 var end = L.marker([{{ last.finish.latitude}}, {{ last.finish.longitude}}]).addTo(map);
 end.bindPopup("End").openPopup();
+map.fitBounds([[{{ first.start.latitude}}, {{ first.start.longitude}}],[{{ last.finish.latitude}}, {{ last.finish.longitude}}]]);
 {% endwith %}
 {% endwith %}
 function setMarkers(s, e) {
   start.setLatLng(s);
   end.setLatLng(e);
+  map.fitBounds([s,e]);
 }
 </script>
 {% endblock %}
