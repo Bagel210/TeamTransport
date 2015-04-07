@@ -4,7 +4,14 @@
     <div class="col-md-6">
         <ul>
           {% for leg in route %}
-            <li onclick="setMarkers([{{leg.start.latitude}}, {{leg.start.longitude}}], [{{leg.finish.latitude}}, {{leg.finish.longitude}}]);">{{ leg.mode }} from {{ leg.start.latitude }}/{{ leg.start.longitude }} to {{ leg.finish.latitude }}/{{ leg.finish.longitude }}</li>
+            <li onclick="setMarkers([{{leg.start.latitude}}, {{leg.start.longitude}}], [{{leg.finish.latitude}}, {{leg.finish.longitude}}]);">
+              {% if leg.mode == 'walk' %}
+              Walk from {{ leg.start.latitude }}/{{ leg.start.longitude }} to {{ leg.finish.name }}
+              {% endif %}
+              {% if leg.mode == 'bus' %}
+              Take the {{ leg.service.name }} from {{ leg.start.name }} to {{ leg.finish.name }}
+              {% endif %}
+            </li>
           {% endfor %}
         </ul>
     </div>
@@ -17,12 +24,14 @@ var map = L.map('map').setView([55.94440, -3.18632], 13);
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
-
-var start = L.marker([55.925205, -3.263334]).addTo(map);
+{% with route|first as first %}
+{% with route|last as last %}
+var start = L.marker([{{ first.start.latitude}}, {{ first.start.longitude}}]).addTo(map);
 start.bindPopup("Start").openPopup();
-var end = L.marker([55.925205, -3.263334]).addTo(map);
+var end = L.marker([{{ last.finish.latitude}}, {{ last.finish.longitude}}]).addTo(map);
 end.bindPopup("End").openPopup();
-
+{% endwith %}
+{% endwith %}
 function setMarkers(s, e) {
   start.setLatLng(s);
   end.setLatLng(e);
