@@ -1,10 +1,10 @@
 {% extends "app/base.html" %}
 {% block main%}
 <div class="row">
-    <div class="col-md-6">
-        <ul>
+    <div class="col-md-6 box">
+        <ul class="list-group">
           {% for leg in route %}
-            <li onclick="setMarkers([{{leg.start.latitude}}, {{leg.start.longitude}}], [{{leg.finish.latitude}}, {{leg.finish.longitude}}]);">
+            <li class="list-group-item" onclick="setMarkers([{{leg.start.latitude}}, {{leg.start.longitude}}], [{{leg.finish.latitude}}, {{leg.finish.longitude}}]);">
               {% if leg.mode == 'walk' %}
               Walk from {{ leg.start.latitude }}/{{ leg.start.longitude }} to {{ leg.finish.name }}
               {% endif %}

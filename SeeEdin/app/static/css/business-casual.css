@@ -190,3 +190,8 @@ footer p {
         clear: both;
     }
 }
+
+.list-group-item:hover {
+  cursor: pointer;
+  background-color: #ddd;
+}
