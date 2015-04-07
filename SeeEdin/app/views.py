@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
@@ -39,6 +39,16 @@ def journeyPlan(request):
          'stop_list': stop_list}, context)
 
 def route(request):
+    stop1 = get_object_or_404(Stops, stop_id=request.POST.get("stop1id", "default_value"))
+    stop2 = get_object_or_404(Stops, stop_id=request.POST("stop2id", "default_value"))
+
+    location1 = stop1.latitude, stop2.longitude
+    location2 = stop2.latitude, stop2.longitude
+
+    print(location1, location2)
+
+    print(request.POST.get("stop1id", "default_value"))
+
     context = RequestContext(request)
     route = api.journey_plan("55.90064,-3.39297", "55.8765,-3.337341", format(datetime.datetime.now(), u'U'),
                              "LeaveAfter")
@@ -47,6 +57,7 @@ def route(request):
     return render_to_response(
         'app/route.html',
         {'route': route}, context)
+
 
 def home(request):
     return render(request,'app/about.html')

@@ -13,34 +13,23 @@
 
     </div>
 
-    <table>
-        <tr><p>Select Bus Stop: </p>
-            <td>
-                <select name="dropdown">
+    <form action="/app/route">
+    <p>Current Location:</p>
+     <select name="stop1id">
+        {% for stop in stop_list %}
+        <option value ="{{ stop.stop_id }}">{{ stop.name }}</option>
+        {% endfor %}
+     </select>
+    <p>Destination:</p>
+     <select name="stop2id">
+        {% for stop in stop_list %}
+        <option value ="{{ stop.stop_id }}">{{ stop.name }}</option>
+        {% endfor %}
+     </select>
+        <input type="submit" value="Find A Journey" />
+    </form>
 
-                    {% for stop in stop_list %}
-                        <option value ="{{ stop.name }}">{{ stop.name }}</option>
-                    {% endfor %}
-                </select>
-            </td>
-        </tr>
-    </table>
 
-    <table>
-        <tr><p>Select Destination: </p>
-            <td>
-                <select name="dropdown">
-
-                    {% for stop in stop_list %}
-                        <option value ="{{ stop.name }}">{{ stop.name }}</option>
-                    {% endfor %}
-                </select>
-            </td>
-        <td>
-            <form id="route_form" method="post" action="/app/route"
-              enctype="multipart/form-data">
-            <input type="submit" value="Find A Journey" /></form></td></tr>
-    </table>
 </div>
 
 
