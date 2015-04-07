@@ -45,9 +45,8 @@ def route(request):
     print(request.POST.dict())
     print(request.GET.dict())
     print(request.body)
-    context = RequestContext(request)
 
-    '''
+
     stop1 = get_object_or_404(Stops, stop_id=request.POST.get("stop1id", "default_value"))
     stop2 = get_object_or_404(Stops, stop_id=request.POST("stop2id", "default_value"))
 
@@ -62,7 +61,7 @@ def route(request):
     route = api.journey_plan("55.90064,-3.39297", "55.8765,-3.337341", format(datetime.datetime.now(), u'U'),
                              "LeaveAfter")
     print(route)
-    '''
+
     return render_to_response(
         'app/route.html',
         {'route': route}, context)
