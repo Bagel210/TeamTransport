@@ -26,10 +26,12 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 {% with route|first as first %}
 {% with route|last as last %}
-var start = L.marker([{{ first.start.latitude}}, {{ first.start.longitude}}]).addTo(map);
-start.bindPopup("Start").openPopup();
-var end = L.marker([{{ last.finish.latitude}}, {{ last.finish.longitude}}]).addTo(map);
-end.bindPopup("End").openPopup();
+var startMarker = L.AwesomeMarkers.icon({ icon: 'flag', markerColor: 'green' });
+var endMarker = L.AwesomeMarkers.icon({ icon: 'flag', markerColor: 'red' });
+var start = L.marker([{{ first.start.latitude}}, {{ first.start.longitude}}], {icon: startMarker}).addTo(map);
+start.bindPopup("Start");
+var end = L.marker([{{ last.finish.latitude}}, {{ last.finish.longitude}}], {icon: endMarker}).addTo(map);
+end.bindPopup("End");
 map.fitBounds([[{{ first.start.latitude}}, {{ first.start.longitude}}],[{{ last.finish.latitude}}, {{ last.finish.longitude}}]]);
 {% endwith %}
 {% endwith %}
