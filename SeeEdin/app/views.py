@@ -40,7 +40,7 @@ def journeyPlan(request):
 
 def route(request):
 
-    print(request.POST.get("stop1id", "default_value"))
+    print(request.GET.get("stop1id", "default_value"))
     print(request.method)
     print(request.POST.dict())
     print(request.GET.dict())
@@ -77,6 +77,7 @@ def register(request):
     # A boolean value for telling the template whether the registration was successful.
     # Set to False initially. Code changes value to True when registration succeeds.
     registered = False
+    print(request.method)
 
     if request.method == 'POST':
 
