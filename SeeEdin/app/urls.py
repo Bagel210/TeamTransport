@@ -14,7 +14,7 @@ urlpatterns = patterns('',
                        url(r'^Home/$', 'app.views.home'),
 
                        url(r'^app/$', login_required(journeyPlan), name="journey_planner"),
-                       url(r'^app/route$', route, name="route"),
+                       url(r'^app/route/$', route, name="route"),
 
                        url(r'^register/$', register, name='register'),
 

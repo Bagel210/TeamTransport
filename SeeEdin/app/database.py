@@ -26,11 +26,6 @@ def add_data():
         departures=list_of_departures
     )
 
-    attractionOne = Attraction.objects.create(
-        bus_stop=busStop,
-        attraction_name='An Attraction at Elm Row'
-    )
-
 def add_stops():
 
     stop_values = list_of_stops['stops']
