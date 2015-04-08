@@ -5,25 +5,27 @@
         <title>Registration</title>
     </head>
 
-    <body>
-    <h1>Register with SeeEdinburgh</h1>
+    <div class="box">
+        <body>
+        <h1>Register with SeeEdinburgh</h1>
 
-    {% if registered %}
-        <strong>You are now a member!</strong>
-        <a href="/">Return to the homepage.</a>
-    {% else %}
+        {% if registered %}
+            <strong>You are now a member!</strong>
+            <a href="/">Return to the homepage.</a>
+        {% else %}
 
-        <form id="user_form" method="post" action="/register/"
-              enctype="multipart/form-data">
+            <form id="user_form" method="post" action="/register/"
+                  enctype="multipart/form-data">
 
-            {% csrf_token %}
+                {% csrf_token %}
 
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
 
-            <input type="submit" name="submit" value="Register"/>
-        </form>
-    {% endif %}
-    </body>
+                <input type="submit" name="submit" value="Register"/>
+            </form>
+        {% endif %}
+        </body>
+    </div>
 
 {% endblock %}

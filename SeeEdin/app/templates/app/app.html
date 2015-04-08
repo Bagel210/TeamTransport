@@ -2,32 +2,34 @@
 
 {% block main%}
 
-<div class="row">
-    <div class="attractionList">
+<div class="box">
+    <div class="row">
+        <div class="attractionList">
 
-        <p>Journey Planner: </p>
+            <p>Journey Planner: </p>
 
-        {% for attraction in attractions_list %}
-            {{ attraction.attraction_name }}
-        {% endfor %}
+            {% for attraction in attractions_list %}
+                {{ attraction.attraction_name }}
+            {% endfor %}
 
+        </div>
+
+        <form method="POST" action="/app/route">
+            <p>Current Location:</p>
+            <select name="stop1id">
+                {% for stop in stop_list %}
+                    <option value ="{{ stop.stop_id }}">{{ stop.name }}</option>
+                {% endfor %}
+            </select>
+            <p>Destination:</p>
+            <select name="stop2id">
+                {% for stop in stop_list %}
+                    <option value ="{{ stop.stop_id }}">{{ stop.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Find A Journey" />
+        </form>
     </div>
-
-    <form method="POST" action="/app/route">
-        <p>Current Location:</p>
-        <select name="stop1id">
-            {% for stop in stop_list %}
-                <option value ="{{ stop.stop_id }}">{{ stop.name }}</option>
-            {% endfor %}
-        </select>
-        <p>Destination:</p>
-        <select name="stop2id">
-            {% for stop in stop_list %}
-                <option value ="{{ stop.stop_id }}">{{ stop.name }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Find A Journey" />
-    </form>
 </div>
 
 

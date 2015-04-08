@@ -20,9 +20,9 @@ from app import api
 
 #
 
-#database.add_data()
-#database.add_stops()
-#database.add_attractions()
+# database.add_data()
+# database.add_stops()
+# database.add_attractions()
 
 def journeyPlan(request):
     context = RequestContext(request)
