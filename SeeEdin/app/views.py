@@ -70,11 +70,8 @@ def home(request):
     return render(request, 'app/about.html')
 
 def register(request):
-    # Like before, get the request's context.
-    context = RequestContext(request)
 
-    # A boolean value for telling the template whether the registration was successful.
-    # Set to False initially. Code changes value to True when registration succeeds.
+    context = RequestContext(request)
     registered = False
     print(request.method)
 
@@ -83,9 +80,8 @@ def register(request):
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(data=request.POST)
 
-        # If the two forms are valid...
         if user_form.is_valid() and profile_form.is_valid():
-            # Save the user's form data to the database.
+
             user = user_form.save()
             user.set_password(user.password)
             user.save()
@@ -93,15 +89,11 @@ def register(request):
             profile = profile_form.save(commit=False)
             profile.user = user
 
-            # Did the user provide a profile picture?
-            # If so, we need to get it from the input form and put it in the UserProfile model.
             if 'picture' in request.FILES:
                 profile.picture = request.FILES['picture']
 
-            # Now we save the UserProfile model instance.
             profile.save()
 
-            # Update our variable to tell the template registration was successful.
             registered = True
 
         else:
@@ -111,7 +103,6 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-    # Render the template depending on the context.
     return render_to_response(
         'app/authentication/register.html',
         {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
@@ -133,7 +124,7 @@ def user_login(request):
                 login(request, user)
                 return HttpResponseRedirect('/Home/')
             else:
-                return HttpResponse("Your AllExplore account is disabled.")
+                return HttpResponse("Your SeeEdin account is disabled.")
         else:
             print("Invalid login details: {0}, {1}".format(username, password))
             return HttpResponse("Faulty credentials.")
