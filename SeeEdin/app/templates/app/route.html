@@ -1,5 +1,9 @@
 {% extends "app/base.html" %}
 {% block main%}
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <div class="row">
     <div class="col-md-6 box">
         <ul class="list-group">
@@ -19,26 +23,17 @@
       <div id="map" style="height: 500px"></div>
     </div>
 </div>
-<script>
-var map = L.map('map').setView([55.94440, -3.18632], 13);
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+
+
 {% with route|first as first %}
 {% with route|last as last %}
-var startMarker = L.AwesomeMarkers.icon({ icon: 'flag', markerColor: 'green' });
-var endMarker = L.AwesomeMarkers.icon({ icon: 'flag', markerColor: 'red' });
-var start = L.marker([{{ first.start.latitude}}, {{ first.start.longitude}}], {icon: startMarker}).addTo(map);
-start.bindPopup("Start");
-var end = L.marker([{{ last.finish.latitude}}, {{ last.finish.longitude}}], {icon: endMarker}).addTo(map);
-end.bindPopup("End");
-map.fitBounds([[{{ first.start.latitude}}, {{ first.start.longitude}}],[{{ last.finish.latitude}}, {{ last.finish.longitude}}]]);
+    <div id="my-div" data-first-lat="{{ first.start.latitude }}" data-first-lng="{{ first.start.longitude }}" data-last-lng="{{ last.finish.longitude }}" data-last-lat="{{ last.finish.latitude }}"></div>
+
+    {% load staticfiles %}
+    <script src="{% static "something.js" %}"></script>
+
 {% endwith %}
 {% endwith %}
-function setMarkers(s, e) {
-  start.setLatLng(s);
-  end.setLatLng(e);
-  map.fitBounds([s,e]);
-}
-</script>
+
+
 {% endblock %}
