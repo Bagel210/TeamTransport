@@ -14,31 +14,7 @@
 
         </div>
 
-<<<<<<< HEAD
-        <form method="POST" action="/app/route/">
-=======
-        <form method="POST" action="/app/route">
->>>>>>> origin/master
-            <p>Current Location:</p>
-            <select name="stop1id">
-                {% for stop in stop_list %}
-                    <option value ="{{ stop.stop_id }}">{{ stop.name }}</option>
-                {% endfor %}
-            </select>
-            <p>Destination:</p>
-            <select name="stop2id">
-                {% for stop in stop_list %}
-                    <option value ="{{ stop.stop_id }}">{{ stop.name }}</option>
-                {% endfor %}
-            </select>
-            <input type="submit" value="Find A Journey" />
-        </form>
-    </div>
-<<<<<<< HEAD
-
-
-    <form method="post" action="/app/route/">
-        {% csrf_token %}
+    <form method="post" action="/app/route/"> 
         <p>Current Location:</p>
         <select name="stop1id">
             {% for stop in stop_list %}
@@ -53,9 +29,7 @@
         </select>
         <input type="submit" value="Find A Journey" />
     </form>
-=======
 </div>
->>>>>>> origin/master
 
 
 </div>
