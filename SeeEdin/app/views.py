@@ -47,10 +47,13 @@ def route(request):
     print(request.GET.dict())
     print(request.body)
 
-    stop1 = get_object_or_404(Stops, stop_id=request.GET.get("stop1id", "default_value"))
-    stop2 = get_object_or_404(Stops, stop_id=request.GET.get("stop2id", "default_value"))
+    stop1_id = request.POST.dict()['stop1id']
+    stop2_id = request.POST.dict()['stop2id']
 
-    location1 = stop1.latitude, stop2.longitude
+    stop1 = Stops.objects.get(stop_id=stop1_id)
+    stop2 = Stops.objects.get(stop_id=stop2_id)
+
+    location1 = stop1.latitude, stop1.longitude
     location2 = stop2.latitude, stop2.longitude
 
     print(location1, location2)
