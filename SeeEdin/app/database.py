@@ -57,3 +57,13 @@ def add_attractions():
                 bus_stop=stop,
                 attraction_name="Edinburgh Castle"
             )
+        if stop.stop_id == "36235925":
+            attraction2 = Attraction.objects.create(
+                bus_stop=stop,
+                attraction_name="Edinburgh Zoo"
+            )
+        if stop.stop_id == "36235879":
+            attraction3 = Attraction.objects.create(
+                bus_stop=stop,
+                attraction_name="North Bridge"
+            )

@@ -4,15 +4,7 @@
 
 <div class="box">
     <div class="row">
-        <div class="attractionList">
-
-            <p>Journey Planner: </p>
-
-            {% for attraction in attractions_list %}
-                {{ attraction.attraction_name }}
-            {% endfor %}
-
-        </div>
+        <p><strong>Journey Planner: </strong></p>
 
     <form method="post" action="/app/route/">
         {% csrf_token %}
@@ -22,6 +14,7 @@
                 <option value = "{{ stop.stop_id }}">{{ stop.name }}</option>
             {% endfor %}
         </select>
+
         <p>Destination:</p>
         <select name="stop2id">
             {% for attraction in attractions_list %}
