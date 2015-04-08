@@ -24,8 +24,8 @@
         </select>
         <p>Destination:</p>
         <select name="stop2id">
-            {% for stop in stop_list %}
-                <option value = "{{ stop.stop_id }}">{{ stop.name }}</option>
+            {% for attraction in attractions_list %}
+                <option value = "{{ attraction.bus_stop.stop_id }}">{{ attraction.attraction_name }}</option>
             {% endfor %}
         </select>
         <input type="submit" value="Find A Journey" />
