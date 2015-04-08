@@ -20,42 +20,39 @@ from app import api
 
 #
 
-#database.add_data()
-#database.add_stops()
-#database.add_attractions()
+# database.add_data()
+# database.add_stops()
+# database.add_attractions()
 
 def journeyPlan(request):
     context = RequestContext(request)
 
-    attractions_list = Attraction.objects.all() #.order_by('attraction_name')
-    busStop_list = BusStop.objects.all() #.order_by('id')
+    attractions_list = Attraction.objects.all() # .order_by('attraction_name')
+    # busStop_list = BusStop.objects.all() #.order_by('id')
 
     stop_list = Stops.objects.all().order_by('name')
 
     return render_to_response(
         'app/app.html',
         {'attractions_list': attractions_list,
-         'busStop_list': busStop_list,
          'stop_list': stop_list}, context)
 
 def route(request):
 
     print(request.GET.get("stop1id", "default_value"))
+    print(request.GET.get("stop2id", "default_value"))
     print(request.method)
     print(request.POST.dict())
     print(request.GET.dict())
     print(request.body)
 
-
-    stop1 = get_object_or_404(Stops, stop_id=request.POST.get("stop1id", "default_value"))
-    stop2 = get_object_or_404(Stops, stop_id=request.POST("stop2id", "default_value"))
+    stop1 = get_object_or_404(Stops, stop_id=request.GET.get("stop1id", "default_value"))
+    stop2 = get_object_or_404(Stops, stop_id=request.GET.get("stop2id", "default_value"))
 
     location1 = stop1.latitude, stop2.longitude
     location2 = stop2.latitude, stop2.longitude
 
     print(location1, location2)
-
-    print(request.POST.get("stop1id", "default_value"))
 
     context = RequestContext(request)
     route = api.journey_plan("55.90064,-3.39297", "55.8765,-3.337341", format(datetime.datetime.now(), u'U'),
